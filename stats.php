@@ -5,7 +5,7 @@ $serverName = "tcp:an-sql-server1.database.windows.net,1433";
 $connectionOptions = array(
     "Database" => "calumsdatabase",
     "Uid" => "AdminAN",
-    "PWD" => "YOUR_PASSWORD"
+    "PWD" => "Taily1047*"
 );
 
 $conn = sqlsrv_connect($serverName, $connectionOptions);
