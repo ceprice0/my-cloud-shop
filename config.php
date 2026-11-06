@@ -11,7 +11,7 @@ function db_connect()
     $serverName = getenv('DB_SERVER') ?: 'tcp:an-sql-server1.database.windows.net,1433';
     $options = array(
         'Database' => getenv('DB_NAME') ?: 'calumsdatabase',
-        'Uid' => getenv('DB_USER') ?: 'AdminAN',
+        'Uid' => getenv('DB_USER') ?: '',
         'PWD' => getenv('DB_PASSWORD') ?: '',
         'Encrypt' => 1,
         'TrustServerCertificate' => 0

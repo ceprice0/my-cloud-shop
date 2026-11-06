@@ -1,22 +1,24 @@
 <?php
 
-$serverName = "tcp:an-sql-server1.database.windows.net,1433";
+require_once __DIR__ . '/config.php';
 
-$connectionOptions = array(
-    "Database" => "calumsdatabase",
-    "Uid" => "AdminAN",
-    "PWD" => ""
-);
+$totalUsers = 0;
+$error = null;
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+try {
+    $conn = db_connect();
+    $stmt = sqlsrv_query($conn, 'SELECT COUNT(*) AS totalusers FROM shopusers');
 
-$sql = "SELECT COUNT(*) AS totalusers FROM shopusers";
+    if ($stmt === false) {
+        throw new RuntimeException('Customer count query failed.');
+    }
 
-$stmt = sqlsrv_query($conn, $sql);
-
-$row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-
-$totalUsers = $row['totalusers'];
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+    $totalUsers = (int) ($row['totalusers'] ?? 0);
+    sqlsrv_close($conn);
+} catch (Throwable $exception) {
+    $error = 'Analytics are temporarily unavailable. Please try again later.';
+}
 
 ?>
 
@@ -103,8 +105,14 @@ h1{
 
     <p>Total Registered Customers</p>
 
+    <?php if ($error): ?>
+        <div class="metric" role="alert">
+            <?php echo e($error); ?>
+        </div>
+    <?php endif; ?>
+
     <div class="number">
-        <?php echo $totalUsers; ?>
+        <?php echo $error ? '—' : $totalUsers; ?>
     </div>
 
     <hr style="margin:25px 0;">
@@ -118,7 +126,7 @@ h1{
     </div>
 
     <div class="metric">
-        👥 Registered Customers: <?php echo $totalUsers; ?>
+        👥 Registered Customers: <?php echo $error ? 'Unavailable' : $totalUsers; ?>
     </div>
 
     <div class="metric">

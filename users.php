@@ -1,20 +1,26 @@
 <?php
 
-$serverName = "tcp:an-sql-server1.database.windows.net,1433";
+require_once __DIR__ . '/config.php';
 
-$connectionOptions = array(
-    "Database" => "calumsdatabase",
-    "Uid" => "AdminAN",
-    "PWD" => "",
-    "Encrypt" => 1,
-    "TrustServerCertificate" => 0
-);
+$users = array();
+$error = null;
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+try {
+    $conn = db_connect();
+    $stmt = sqlsrv_query($conn, 'SELECT id, name, email, created_at FROM shopusers ORDER BY id DESC');
 
-$sql = "SELECT id, name, email, created_at FROM shopusers ORDER BY id DESC";
+    if ($stmt === false) {
+        throw new RuntimeException('Customer query failed.');
+    }
 
-$stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $users[] = $row;
+    }
+
+    sqlsrv_close($conn);
+} catch (Throwable $exception) {
+    $error = 'Customer records are temporarily unavailable. Please try again later.';
+}
 
 ?>
 
@@ -126,6 +132,11 @@ tr:hover{
         </p>
     </div>
 
+    <?php if ($error): ?>
+        <div class="info-card" role="alert">
+            <?php echo e($error); ?>
+        </div>
+    <?php else: ?>
     <table>
 
         <tr>
@@ -135,21 +146,23 @@ tr:hover{
             <th>Registration Date</th>
         </tr>
 
-        <?php
-
-        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-        {
-            echo "<tr>";
-            echo "<td>".$row['id']."</td>";
-            echo "<td>".$row['name']."</td>";
-            echo "<td>".$row['email']."</td>";
-            echo "<td>".$row['created_at']->format('Y-m-d H:i:s')."</td>";
-            echo "</tr>";
-        }
-
-        ?>
+        <?php if (!$users): ?>
+            <tr>
+                <td colspan="4">No customer accounts have been registered yet.</td>
+            </tr>
+        <?php else: ?>
+            <?php foreach ($users as $row): ?>
+                <tr>
+                    <td><?php echo (int) $row['id']; ?></td>
+                    <td><?php echo e($row['name']); ?></td>
+                    <td><?php echo e($row['email']); ?></td>
+                    <td><?php echo e($row['created_at'] instanceof DateTimeInterface ? $row['created_at']->format('Y-m-d H:i:s') : $row['created_at']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
     </table>
+    <?php endif; ?>
 
     <a href="index.php" class="btn">
         🏠 Home
