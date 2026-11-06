@@ -22,7 +22,7 @@ body{
 
 .register-form{
     background:white;
-    width:450px;
+    width:min(450px, calc(100% - 32px));
     padding:40px;
     border-radius:15px;
     box-shadow:0 10px 25px rgba(0,0,0,0.2);
@@ -50,6 +50,13 @@ input{
     border:1px solid #ccc;
     border-radius:8px;
     box-sizing:border-box;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#333;
+    font-weight:bold;
 }
 
 .btn{
@@ -93,15 +100,18 @@ Create your customer account
 <form method="post" action="process_register.php">
 
 <div class="form-group">
-<input type="text" name="name" placeholder="Full Name" required>
+<label for="name">Full name</label>
+<input id="name" type="text" name="name" autocomplete="name" maxlength="100" required>
 </div>
 
 <div class="form-group">
-<input type="email" name="email" placeholder="Email Address" required>
+<label for="email">Email address</label>
+<input id="email" type="email" name="email" autocomplete="email" maxlength="255" required>
 </div>
 
 <div class="form-group">
-<input type="password" name="password" placeholder="Password" required>
+<label for="password">Password</label>
+<input id="password" type="password" name="password" autocomplete="new-password" minlength="8" required>
 </div>
 
 <input type="submit" value="Create Account" class="btn">

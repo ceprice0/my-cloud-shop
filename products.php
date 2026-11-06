@@ -1,27 +1,34 @@
 <?php
 
-$serverName = "tcp:an-sql-server1.database.windows.net,1433";
+require_once __DIR__ . '/config.php';
 
-$connectionOptions = array(
-    "Database" => "calumsdatabase",
-    "Uid" => "AdminAN",
-    "PWD" => "",
-    "Encrypt" => 1,
-    "TrustServerCertificate" => 0
-);
+$products = array();
+$error = null;
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+try {
+    $conn = db_connect();
+    $stmt = sqlsrv_query($conn, 'SELECT ProductName, Price, StockQuantity FROM Products ORDER BY ProductName');
 
-$sql = "SELECT * FROM Products";
+    if ($stmt === false) {
+        throw new RuntimeException('Product query failed.');
+    }
 
-$stmt = sqlsrv_query($conn, $sql);
-
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $products[] = $row;
+    }
+    sqlsrv_close($conn);
+} catch (Throwable $exception) {
+    $error = 'Products are temporarily unavailable. Please try again later.';
+}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CloudCart Product Catalogue</title>
 
@@ -36,6 +43,8 @@ font-family:Arial,sans-serif;
 
 body{
 background:#f4f6f9;
+color:#172033;
+margin:0;
 }
 
 .header{
@@ -75,6 +84,21 @@ color:green;
 font-weight:bold;
 }
 
+.message{
+    max-width:700px;
+    margin:40px auto;
+    padding:20px;
+    background:white;
+    text-align:center;
+}
+
+.back{
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    color:#2563eb;
+}
+
 </style>
 
 </head>
@@ -89,34 +113,36 @@ font-weight:bold;
 
 <div class="products">
 
-<?php
-
-while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-{
-?>
+<?php if ($error): ?>
+<p class="message"><?php echo e($error); ?></p>
+<?php elseif (!$products): ?>
+<p class="message">No products are available right now.</p>
+<?php else: ?>
+<?php foreach ($products as $row): ?>
 
 <div class="card">
 
 <h2>
-<?php echo $row['ProductName']; ?>
+<?php echo e($row['ProductName']); ?>
 </h2>
 
 <div class="price">
-£<?php echo $row['Price']; ?>
+£<?php echo number_format((float) $row['Price'], 2); ?>
 </div>
 
 <div class="stock">
 Stock:
-<?php echo $row['StockQuantity']; ?>
+<?php echo (int) $row['StockQuantity']; ?>
 </div>
 
 </div>
 
-<?php
-}
-?>
+<?php endforeach; ?>
+<?php endif; ?>
 
 </div>
+
+<a class="back" href="index.php">Back to home</a>
 
 </body>
 
