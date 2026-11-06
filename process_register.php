@@ -13,7 +13,10 @@ $connectionOptions = array(
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST["name"];
-    $email = $_POST["email"];
+$email = filter_var(
+    $_POST["email"],
+    FILTER_SANITIZE_EMAIL
+);
     $password = $_POST["password"];
 
     $conn = sqlsrv_connect($serverName, $connectionOptions);

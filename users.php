@@ -20,73 +20,147 @@ $stmt = sqlsrv_query($conn, $sql);
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Registered Users</title>
+
+<title>CloudCart Customer Management</title>
 
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
 body{
-font-family:Arial;
-background:#f4f4f4;
-padding:30px;
+    background:#f4f6f9;
+    padding:40px;
+}
+
+.header{
+    background:#2563eb;
+    color:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.header h1{
+    margin-bottom:10px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.info-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 table{
-width:100%;
-background:white;
-border-collapse:collapse;
-}
-
-th,td{
-padding:12px;
-border:1px solid #ddd;
+    width:100%;
+    background:white;
+    border-collapse:collapse;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 th{
-background:#007bff;
-color:white;
+    background:#2563eb;
+    color:white;
+    padding:15px;
 }
 
-h1{
-text-align:center;
+td{
+    padding:15px;
+    border-bottom:1px solid #eee;
 }
 
-a{
-text-decoration:none;
-padding:10px 20px;
-background:#007bff;
-color:white;
-border-radius:5px;
+tr:hover{
+    background:#f8fafc;
 }
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    margin-top:20px;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
 </style>
 
 </head>
+
 <body>
 
-<h1>Registered Users</h1>
+<div class="container">
 
-<p><a href="index.php">Home</a></p>
+    <div class="header">
+        <h1>👥 CloudCart Customer Management</h1>
+        <p>Registered customer accounts stored in Azure SQL Database</p>
+    </div>
 
-<table>
-<tr>
-<th>ID</th>
-<th>Name</th>
-<th>Email</th>
-<th>Registered</th>
-</tr>
+    <div class="info-card">
+        <h2>Customer Database</h2>
+        <p>
+            This page displays all customer accounts registered through
+            the CloudCart e-commerce platform.
+        </p>
+    </div>
 
-<?php
-while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-{
-echo "<tr>";
-echo "<td>".$row['id']."</td>";
-echo "<td>".$row['name']."</td>";
-echo "<td>".$row['email']."</td>";
-echo "<td>".$row['created_at']->format('Y-m-d H:i:s')."</td>";
-echo "</tr>";
-}
-?>
+    <table>
 
-</table>
+        <tr>
+            <th>Customer ID</th>
+            <th>Full Name</th>
+            <th>Email Address</th>
+            <th>Registration Date</th>
+        </tr>
+
+        <?php
+
+        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+        {
+            echo "<tr>";
+            echo "<td>".$row['id']."</td>";
+            echo "<td>".$row['name']."</td>";
+            echo "<td>".$row['email']."</td>";
+            echo "<td>".$row['created_at']->format('Y-m-d H:i:s')."</td>";
+            echo "</tr>";
+        }
+
+        ?>
+
+    </table>
+
+    <a href="index.php" class="btn">
+        🏠 Home
+    </a>
+
+    <a href="stats.php" class="btn">
+        📊 Dashboard
+    </a>
+
+</div>
 
 </body>
+
 </html>
