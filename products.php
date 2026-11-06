@@ -4,6 +4,7 @@ require_once __DIR__ . '/config.php';
 
 $products = array();
 $error = null;
+$usingFallback = false;
 
 try {
     $conn = db_connect();
@@ -18,7 +19,13 @@ try {
     }
     sqlsrv_close($conn);
 } catch (Throwable $exception) {
-    $error = 'Products are temporarily unavailable. Please try again later.';
+    $usingFallback = true;
+    $error = 'Showing the sample collection while the live catalogue is unavailable.';
+    $products = array(
+        array('ProductName' => 'Gaming Mouse', 'Price' => 29.99, 'StockQuantity' => 12),
+        array('ProductName' => 'Mechanical Keyboard', 'Price' => 79.99, 'StockQuantity' => 8),
+        array('ProductName' => 'Gaming Headset', 'Price' => 49.99, 'StockQuantity' => 15)
+    );
 }
 ?>
 
@@ -101,26 +108,43 @@ font-weight:bold;
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<div class="header">
+<nav class="site-nav">
+    <a class="brand" href="index.php">CLOUDCART</a>
+    <div class="nav-links">
+        <a href="products.php">Shop</a>
+        <a href="register.php">Create account</a>
+        <a href="cart.php">Cart</a>
+        <a href="stats.php">Dashboard</a>
+    </div>
+</nav>
 
-<h1>🛒 CloudCart Product Catalogue</h1>
-
+<main class="page-shell">
+<div class="catalogue-head">
+    <div>
+        <span class="eyebrow">The collection</span>
+        <h1>Tools for better play.</h1>
+        <p>Useful, well-priced additions for your desk.</p>
+    </div>
 </div>
 
-<div class="products">
-
 <?php if ($error): ?>
-<p class="message"><?php echo e($error); ?></p>
-<?php elseif (!$products): ?>
+<p class="message" role="status"><?php echo e($error); ?></p>
+<?php endif; ?>
+
+<div class="catalogue-grid">
+
+<?php if (!$products): ?>
 <p class="message">No products are available right now.</p>
 <?php else: ?>
 <?php foreach ($products as $row): ?>
 
-<div class="card">
+<div class="catalogue-card">
 
 <h2>
 <?php echo e($row['ProductName']); ?>
@@ -142,7 +166,8 @@ Stock:
 
 </div>
 
-<a class="back" href="index.php">Back to home</a>
+<a class="back-link" href="index.php">&larr; Back to home</a>
+</main>
 
 </body>
 

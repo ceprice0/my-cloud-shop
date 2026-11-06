@@ -37,12 +37,28 @@ margin-bottom:25px;
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<h1>📦 Order Tracking</h1>
+<nav class="site-nav">
+	<a class="brand" href="index.php">CLOUDCART</a>
+	<div class="nav-links">
+		<a href="products.php">Shop</a>
+		<a href="register.php">Create account</a>
+		<a href="cart.php">Cart</a>
+		<a href="stats.php">Dashboard</a>
+	</div>
+</nav>
 
+<main class="page-shell">
+<span class="eyebrow">Your orders</span>
+<h1>Order tracking</h1>
+<p class="lede">A quiet view of what is on its way.</p>
+
+<div class="table-wrap">
 <table>
 
 <tr>
@@ -70,6 +86,8 @@ margin-bottom:25px;
 </tr>
 
 </table>
+</div>
+</main>
 
 </body>
 </html>

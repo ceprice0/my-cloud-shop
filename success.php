@@ -2,6 +2,9 @@
 <html>
 <head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Account Created</title>
 
 <style>
@@ -44,15 +47,28 @@ font-weight:bold;
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<div class="card">
+<nav class="site-nav">
+	<a class="brand" href="index.php">CLOUDCART</a>
+	<div class="nav-links">
+		<a href="products.php">Shop</a>
+		<a href="cart.php">Cart</a>
+		<a href="stats.php">Dashboard</a>
+	</div>
+</nav>
 
-<div class="icon">✅</div>
+<main class="page-shell">
+<div class="surface status-card">
 
-<h1>Welcome to CloudCart!</h1>
+<div class="check">&#10003;</div>
+
+<span class="eyebrow">All set</span>
+<h1>Welcome to CloudCart</h1>
 
 <p>
 Customer account created successfully.
@@ -60,19 +76,18 @@ Your information has been securely stored
 in Azure SQL Database.
 </p>
 
-<a href="index.php" class="btn home">
+<div class="actions">
+<a href="index.php" class="btn btn-secondary">
 Home
 </a>
 
-<a href="products.php" class="btn products">
+<a href="products.php" class="btn">
 Browse Products
 </a>
-
-<a href="stats.php" class="btn dashboard">
-Dashboard
-</a>
+</div>
 
 </div>
+</main>
 
 </body>
 </html>

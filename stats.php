@@ -95,13 +95,26 @@ h1{
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<div class="card">
+<nav class="site-nav">
+    <a class="brand" href="index.php">CLOUDCART</a>
+    <div class="nav-links">
+        <a href="products.php">Shop</a>
+        <a href="register.php">Create account</a>
+        <a href="cart.php">Cart</a>
+        <a href="users.php">Customers</a>
+    </div>
+</nav>
 
-    <h1>📊 CloudCart Analytics Dashboard</h1>
+<main class="page-shell dashboard">
+<div class="surface">
+    <span class="eyebrow">Admin view</span>
+    <h1>Store overview</h1>
 
     <p>Total Registered Customers</p>
 
@@ -117,35 +130,42 @@ h1{
 
     <hr style="margin:25px 0;">
 
+    <div class="metrics">
     <div class="metric">
-        🛍 Products Available: 5
+        <strong>Products available: 5</strong>
+        <span>Current catalogue items</span>
     </div>
 
     <div class="metric">
-        📦 Orders Processed: 3
+        <strong>Orders processed: 3</strong>
+        <span>Sample order activity</span>
     </div>
 
     <div class="metric">
-        👥 Registered Customers: <?php echo $error ? 'Unavailable' : $totalUsers; ?>
+        <strong>Registered customers: <?php echo $error ? 'Unavailable' : $totalUsers; ?></strong>
+        <span>Live database count</span>
     </div>
 
     <div class="metric">
-        ☁ Platform: Microsoft Azure App Service
+        <strong>Platform</strong>
+        <span>Microsoft Azure App Service</span>
     </div>
 
     <div class="metric">
-        🗄 Database: Azure SQL Database
+        <strong>Database</strong>
+        <span>Azure SQL Database</span>
     </div>
 
     <div class="metric">
-        🚀 Deployment: GitHub Actions CI/CD
+        <strong>Deployment</strong>
+        <span>GitHub Actions CI/CD</span>
+    </div>
     </div>
 
-    <a href="index.php" class="btn">
-        🏠 Back Home
-    </a>
+    <a href="index.php" class="btn">Back home</a>
 
 </div>
+</main>
 
 </body>
 </html>

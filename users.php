@@ -113,30 +113,33 @@ tr:hover{
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<div class="container">
-
-    <div class="header">
-        <h1>👥 CloudCart Customer Management</h1>
-        <p>Registered customer accounts stored in Azure SQL Database</p>
+<nav class="site-nav">
+    <a class="brand" href="index.php">CLOUDCART</a>
+    <div class="nav-links">
+        <a href="products.php">Shop</a>
+        <a href="register.php">Create account</a>
+        <a href="cart.php">Cart</a>
+        <a href="stats.php">Dashboard</a>
     </div>
+</nav>
 
-    <div class="info-card">
-        <h2>Customer Database</h2>
-        <p>
-            This page displays all customer accounts registered through
-            the CloudCart e-commerce platform.
-        </p>
-    </div>
+<main class="page-shell">
+    <span class="eyebrow">Admin view</span>
+    <h1>Customer accounts</h1>
+    <p class="lede">Registered customers held in the CloudCart database.</p>
 
     <?php if ($error): ?>
-        <div class="info-card" role="alert">
+        <div class="message" role="alert">
             <?php echo e($error); ?>
         </div>
     <?php else: ?>
+    <div class="table-wrap">
     <table>
 
         <tr>
@@ -162,17 +165,11 @@ tr:hover{
         <?php endif; ?>
 
     </table>
+    </div>
     <?php endif; ?>
 
-    <a href="index.php" class="btn">
-        🏠 Home
-    </a>
-
-    <a href="stats.php" class="btn">
-        📊 Dashboard
-    </a>
-
-</div>
+    <a href="index.php" class="back-link">&larr; Back to home</a>
+</main>
 
 </body>
 

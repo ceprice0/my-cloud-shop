@@ -85,17 +85,28 @@ label{
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<div class="register-form">
+<nav class="site-nav">
+    <a class="brand" href="index.php">CLOUDCART</a>
+    <div class="nav-links">
+        <a href="products.php">Shop</a>
+        <a href="cart.php">Cart</a>
+        <a href="stats.php">Dashboard</a>
+    </div>
+</nav>
 
-<h1>🛒 CloudCart</h1>
+<main class="page-shell narrow-shell">
+<div class="surface form-shell">
 
-<p class="subtitle">
-Create your customer account
-</p>
+<span class="eyebrow">A little more personal</span>
+<h1>Create your account</h1>
+
+<p>Save your details for a smoother CloudCart experience.</p>
 
 <form method="post" action="process_register.php">
 
@@ -114,15 +125,16 @@ Create your customer account
 <input id="password" type="password" name="password" autocomplete="new-password" minlength="8" required>
 </div>
 
-<input type="submit" value="Create Account" class="btn">
+<input type="submit" value="Create Account" class="btn form-submit">
 
 </form>
 
-<a href="index.php" class="home">
-← Back to Home
+<a href="index.php" class="form-link">
+&larr; Back to home
 </a>
 
 </div>
+</main>
 
 </body>
 

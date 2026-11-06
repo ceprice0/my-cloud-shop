@@ -195,111 +195,81 @@ body{
 
 </style>
 
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
 <!-- Navigation -->
 
-<nav class="navbar">
-    <a href="index.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="register.php">Register</a>
-    <a href="cart.php">Cart</a>
-    <a href="stats.php">Dashboard</a>
+<nav class="site-nav">
+    <a class="brand" href="index.php">CLOUDCART</a>
+    <div class="nav-links">
+        <a href="products.php">Shop</a>
+        <a href="register.php">Create account</a>
+        <a href="cart.php">Cart</a>
+        <a href="stats.php">Dashboard</a>
+    </div>
 </nav>
 
 <!-- Header -->
 
-<div class="header">
-    <h1>🛒 CloudCart</h1>
-    <p>Scalable Cloud E-Commerce Platform</p>
-</div>
+<main class="page-shell">
+<section class="hero-panel">
+    <div class="hero-copy">
+        <span class="eyebrow">Thoughtful tech, simply chosen</span>
+        <h1>Good tools make better play.</h1>
+        <p class="lede">A considered collection of gaming essentials for desks, setups, and the hours you actually want to spend there.</p>
+        <div class="hero-actions">
+            <a href="products.php" class="btn">Shop the collection</a>
+            <a href="register.php" class="btn btn-secondary">Create an account</a>
+        </div>
+    </div>
+    <div class="hero-note">
+        <strong>03</strong>
+        <span>carefully selected essentials in the current collection</span>
+    </div>
+</section>
 
-<!-- Hero -->
-
-<div class="hero">
-
-    <h2>Welcome to CloudCart</h2>
-
-    <p>
-        CloudCart is a cloud-hosted e-commerce platform deployed on
-        Microsoft Azure App Service and integrated with Azure SQL Database.
-        Customers can browse products, create accounts, manage shopping carts
-        and track orders through a scalable cloud architecture.
-    </p>
-
-    <div class="buttons">
-
-        <a href="products.php" class="btn btn-products">
-            Browse Products
-        </a>
-
-        <a href="register.php" class="btn btn-register">
-            Register
-        </a>
-
-        <a href="cart.php" class="btn btn-cart">
-            Shopping Cart
-        </a>
-
-        <a href="stats.php" class="btn btn-dashboard">
-            Dashboard
-        </a>
-
+<section>
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">The edit</span>
+            <h2>Made for your setup</h2>
+        </div>
+        <a class="back-link" href="products.php">View all products &rarr;</a>
     </div>
 
-</div>
+<div class="product-grid">
 
-<!-- Featured Products -->
-
-<div class="products">
-
-    <div class="card">
-        <h3>🎮 Gaming Mouse</h3>
+    <div class="product-card">
+        <span class="product-mark">01 / precision</span>
+        <h3>Gaming Mouse</h3>
         <p>RGB professional gaming mouse with programmable buttons.</p>
         <div class="price">£29.99</div>
     </div>
 
-    <div class="card">
-        <h3>⌨️ Mechanical Keyboard</h3>
+    <div class="product-card">
+        <span class="product-mark">02 / tactile</span>
+        <h3>Mechanical Keyboard</h3>
         <p>Premium mechanical keyboard with blue switches.</p>
         <div class="price">£79.99</div>
     </div>
 
-    <div class="card">
-        <h3>🎧 Gaming Headset</h3>
+    <div class="product-card">
+        <span class="product-mark">03 / focus</span>
+        <h3>Gaming Headset</h3>
         <p>7.1 surround sound gaming headset with microphone.</p>
         <div class="price">£49.99</div>
     </div>
 
 </div>
+</section>
 
-<!-- Features -->
+</main>
 
-<div class="features">
-
-    <h2>Why Choose CloudCart?</h2>
-
-    <p>
-        ✅ Azure App Service Hosting<br>
-        ✅ Azure SQL Database Integration<br>
-        ✅ Secure User Registration<br>
-        ✅ Product Catalogue Management<br>
-        ✅ Shopping Cart Functionality<br>
-        ✅ Order Tracking Capabilities<br>
-        ✅ Cloud Scalability & Reliability
-    </p>
-
-</div>
-
-<!-- Footer -->
-
-<div class="footer">
-    <p>
-        Developed by Calum Price | DAT6007 Cloud Computing Deployment
-    </p>
-</div>
+<footer class="site-footer">CloudCart / DAT6007 Cloud Computing Deployment</footer>
 
 </body>
 </html>
