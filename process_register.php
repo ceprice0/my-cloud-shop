@@ -1,23 +1,15 @@
 <?php
 
-$serverName = "tcp:an-sql-server1.database.windows.net,1433";
-
-$connectionOptions = array(
-    "Database" => "calumsdatabase",
-    "Uid" => "AdminAN",
-    "PWD" => "",
-    "Encrypt" => 1,
-    "TrustServerCertificate" => 0
-);
+require_once 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: register.php");
     exit();
 }
 
-$name = trim($_POST["name"]);
-$email = trim($_POST["email"]);
-$password = $_POST["password"];
+$name = trim($_POST["name"] ?? '');
+$email = trim($_POST["email"] ?? '');
+$password = $_POST["password"] ?? '';
 
 if(empty($name) || empty($email) || empty($password))
 {
@@ -34,43 +26,44 @@ if(strlen($password) < 8)
     die("Password must be at least 8 characters.");
 }
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+try {
 
-if(!$conn)
-{
-    die("Database Connection Failed");
-}
+    $conn = db_connect();
 
-$hashedPassword = password_hash(
-    $password,
-    PASSWORD_DEFAULT
-);
+    $hashedPassword = password_hash(
+        $password,
+        PASSWORD_DEFAULT
+    );
 
-$sql = "INSERT INTO shopusers (name, email, password)
-        VALUES (?, ?, ?)";
+    $sql = "INSERT INTO shopusers (name, email, password)
+            VALUES (?, ?, ?)";
 
-$params = array(
-    $name,
-    strtolower($email),
-    $hashedPassword
-);
+    $params = array(
+        $name,
+        strtolower($email),
+        $hashedPassword
+    );
 
-$stmt = sqlsrv_query(
-    $conn,
-    $sql,
-    $params
-);
+    $stmt = sqlsrv_query(
+        $conn,
+        $sql,
+        $params
+    );
 
-if($stmt)
-{
+    if($stmt === false)
+    {
+        die(print_r(sqlsrv_errors(), true));
+    }
+
     sqlsrv_close($conn);
 
     header("Location: success.php");
     exit();
+
 }
-else
+catch(Exception $e)
 {
-    die("Registration Failed");
+    die($e->getMessage());
 }
 
 ?>
