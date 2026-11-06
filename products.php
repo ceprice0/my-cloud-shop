@@ -1,142 +1,123 @@
+<?php
+
+$serverName = "tcp:an-sql-server1.database.windows.net,1433";
+
+$connectionOptions = array(
+    "Database" => "calumsdatabase",
+    "Uid" => "AdminAN",
+    "PWD" => "",
+    "Encrypt" => 1,
+    "TrustServerCertificate" => 0
+);
+
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+
+$sql = "SELECT * FROM Products";
+
+$stmt = sqlsrv_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>CloudCart Product Catalogue</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:#f4f6f9;
-}
-
-.navbar{
-    background:#1e293b;
-    padding:15px;
-    text-align:center;
-}
-
-.navbar a{
-    color:white;
-    text-decoration:none;
-    margin:0 20px;
-    font-weight:bold;
+background:#f4f6f9;
 }
 
 .header{
-    background:#2563eb;
-    color:white;
-    text-align:center;
-    padding:40px;
+background:#2563eb;
+color:white;
+padding:30px;
+text-align:center;
 }
 
 .products{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:25px;
-    padding:40px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:40px;
 }
 
 .card{
-    width:300px;
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    text-align:center;
-}
-
-.card h2{
-    margin-bottom:15px;
+background:white;
+width:300px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
 }
 
 .price{
-    font-size:30px;
-    color:#2563eb;
-    font-weight:bold;
-    margin:15px 0;
+font-size:30px;
+font-weight:bold;
+color:#2563eb;
+margin-top:15px;
 }
 
-.btn{
-    display:inline-block;
-    margin-top:10px;
-    padding:12px 20px;
-    background:#28a745;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-}
-
-.btn:hover{
-    background:#218838;
+.stock{
+margin-top:10px;
+color:green;
+font-weight:bold;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<nav class="navbar">
-    <a href="index.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="register.php">Register</a>
-    <a href="cart.php">Cart</a>
-    <a href="orders.php">Orders</a>
-    <a href="stats.php">Dashboard</a>
-</nav>
-
 <div class="header">
-    <h1>🛍️ CloudCart Product Catalogue</h1>
-    <p>Browse our featured products</p>
+
+<h1>🛒 CloudCart Product Catalogue</h1>
+
 </div>
 
 <div class="products">
 
-    <div class="card">
-        <h2>🎮 Gaming Mouse</h2>
-        <p>RGB Gaming Mouse with programmable buttons.</p>
-        <div class="price">£29.99</div>
-        <a href="cart.php" class="btn">Add To Cart</a>
-    </div>
+<?php
 
-    <div class="card">
-        <h2>⌨️ Mechanical Keyboard</h2>
-        <p>Premium mechanical keyboard with blue switches.</p>
-        <div class="price">£79.99</div>
-        <a href="cart.php" class="btn">Add To Cart</a>
-    </div>
+while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+{
+?>
 
-    <div class="card">
-        <h2>🎧 Gaming Headset</h2>
-        <p>7.1 surround sound headset with microphone.</p>
-        <div class="price">£49.99</div>
-        <a href="cart.php" class="btn">Add To Cart</a>
-    </div>
+<div class="card">
 
-    <div class="card">
-        <h2>📷 HD Webcam</h2>
-        <p>1080p webcam perfect for streaming and meetings.</p>
-        <div class="price">£39.99</div>
-        <a href="cart.php" class="btn">Add To Cart</a>
-    </div>
+<h2>
+<?php echo $row['ProductName']; ?>
+</h2>
 
-    <div class="card">
-        <h2>💺 Gaming Chair</h2>
-        <p>Ergonomic gaming chair for comfort and support.</p>
-        <div class="price">£199.99</div>
-        <a href="cart.php" class="btn">Add To Cart</a>
-    </div>
+<div class="price">
+£<?php echo $row['Price']; ?>
+</div>
+
+<div class="stock">
+Stock:
+<?php echo $row['StockQuantity']; ?>
+</div>
+
+</div>
+
+<?php
+}
+?>
 
 </div>
 
 </body>
+
 </html>
