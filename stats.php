@@ -21,64 +21,67 @@ $totalUsers = $row['totalusers'];
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CloudCart Analytics Dashboard</title>
 
 <style>
 
-body{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family:Arial,sans-serif;
+}
+
+body{
     background:linear-gradient(135deg,#0f172a,#1e293b);
     color:white;
-    text-align:center;
-    padding-top:80px;
     min-height:100vh;
-    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .card{
     background:#1e293b;
-    width:550px;
-    margin:auto;
+    width:650px;
     padding:40px;
     border-radius:15px;
     box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-.number{
-    font-size:70px;
-    color:#38bdf8;
-    font-weight:bold;
+    text-align:center;
 }
 
 h1{
     margin-bottom:20px;
 }
 
-h3{
+.number{
+    font-size:80px;
     color:#38bdf8;
-    margin-top:25px;
-}
-
-p{
-    font-size:18px;
+    font-weight:bold;
+    margin:20px 0;
 }
 
 .metric{
     background:#334155;
-    margin:10px auto;
-    padding:12px;
-    border-radius:8px;
+    padding:15px;
+    border-radius:10px;
+    margin:10px 0;
+    font-size:18px;
 }
 
 .btn{
     display:inline-block;
-    margin-top:20px;
+    margin-top:25px;
+    padding:12px 25px;
     background:#2563eb;
     color:white;
-    padding:12px 25px;
     text-decoration:none;
     border-radius:8px;
     font-weight:bold;
@@ -104,20 +107,22 @@ p{
         <?php echo $totalUsers; ?>
     </div>
 
-    <hr style="margin:30px 0;">
-
-    <h3>Store Metrics</h3>
+    <hr style="margin:25px 0;">
 
     <div class="metric">
         🛍 Products Available: 5
     </div>
 
     <div class="metric">
-        📦 Orders Processed: 2
+        📦 Orders Processed: 3
     </div>
 
     <div class="metric">
-        ☁ Platform: Microsoft Azure
+        👥 Registered Customers: <?php echo $totalUsers; ?>
+    </div>
+
+    <div class="metric">
+        ☁ Platform: Microsoft Azure App Service
     </div>
 
     <div class="metric">
@@ -125,11 +130,11 @@ p{
     </div>
 
     <div class="metric">
-        🚀 Deployment: GitHub → Azure App Service
+        🚀 Deployment: GitHub Actions CI/CD
     </div>
 
     <a href="index.php" class="btn">
-        Back Home
+        🏠 Back Home
     </a>
 
 </div>

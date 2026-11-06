@@ -1,34 +1,47 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shopping Cart</title>
+<title>CloudCart Shopping Cart</title>
 
 <style>
 
 body{
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#f4f4f4;
 padding:50px;
 }
 
-.cart{
+.card{
+background:white;
 max-width:700px;
 margin:auto;
-background:white;
-padding:30px;
-border-radius:12px;
+padding:40px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 h1{
-text-align:center;
+margin-bottom:25px;
 }
 
 .total{
-font-size:30px;
+font-size:32px;
 font-weight:bold;
 color:#2563eb;
+margin-top:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+background:#28a745;
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin-top:20px;
 }
 
 </style>
@@ -37,20 +50,22 @@ color:#2563eb;
 
 <body>
 
-<div class="cart">
+<div class="card">
 
-<h1>Shopping Cart</h1>
+<h1>🛒 Shopping Cart</h1>
 
-<p>Gaming Mouse x1</p>
-<p>Mechanical Keyboard x1</p>
+<p>Gaming Mouse × 1</p>
+<p>Mechanical Keyboard × 1</p>
 
 <hr>
 
 <div class="total">
-
 Total: £109.98
-
 </div>
+
+<a href="orders.php" class="btn">
+Proceed To Checkout
+</a>
 
 </div>
 
