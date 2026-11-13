@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CloudCart Registration</title>
+<title>Price Prestige Motors Registration</title>
 
 <style>
 
@@ -92,7 +92,7 @@ label{
 <body>
 
 <nav class="site-nav">
-    <a class="brand" href="index.php">CLOUDCART</a>
+    <a class="brand" href="index.php">PRICE PRESTIGE MOTORS</a>
     <div class="nav-links">
         <a href="products.php">Shop</a>
         <a href="cart.php">Cart</a>
@@ -106,7 +106,7 @@ label{
 <span class="eyebrow">A little more personal</span>
 <h1>Create your account</h1>
 
-<p>Save your details for a smoother CloudCart experience.</p>
+<p>Save your details for a smoother Price Prestige Motors experience.</p>
 
 <form method="post" action="process_register.php">
 

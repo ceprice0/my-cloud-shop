@@ -30,7 +30,7 @@ try {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CloudCart Analytics Dashboard</title>
+<title>Price Prestige Motors Analytics Dashboard</title>
 
 <style>
 
@@ -102,7 +102,7 @@ h1{
 <body>
 
 <nav class="site-nav">
-    <a class="brand" href="index.php">CLOUDCART</a>
+    <a class="brand" href="index.php">PRICE PRESTIGE MOTORS</a>
     <div class="nav-links">
         <a href="products.php">Shop</a>
         <a href="register.php">Create account</a>

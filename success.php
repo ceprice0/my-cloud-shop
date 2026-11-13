@@ -54,7 +54,7 @@ font-weight:bold;
 <body>
 
 <nav class="site-nav">
-	<a class="brand" href="index.php">CLOUDCART</a>
+	<a class="brand" href="index.php">PRICE PRESTIGE MOTORS</a>
 	<div class="nav-links">
 		<a href="products.php">Shop</a>
 		<a href="cart.php">Cart</a>
@@ -68,7 +68,7 @@ font-weight:bold;
 <div class="check">&#10003;</div>
 
 <span class="eyebrow">All set</span>
-<h1>Welcome to CloudCart</h1>
+<h1>Welcome to Price Prestige Motors</h1>
 
 <p>
 Customer account created successfully.
