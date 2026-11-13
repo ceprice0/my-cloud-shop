@@ -388,6 +388,7 @@ footer a {
         <a href="#inventory">Inventory</a>
         <a href="#about">Our Approach</a>
         <?php if ($signedInUser): ?>
+            <a href="account.php">My account</a>
             <a href="enquiry.php">My enquiry</a>
             <a class="nav-button" href="logout.php">Sign out</a>
         <?php else: ?>

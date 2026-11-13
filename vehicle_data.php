@@ -1,0 +1,17 @@
+<?php
+
+function vehicle_catalogue(): array
+{
+    return array(
+        array('id' => 'aston-martin-vantage', 'year' => 2024, 'make' => 'Aston Martin', 'model' => 'Vantage', 'type' => 'Sports car', 'mileage' => '2,100 miles', 'engine' => '4.0L V8', 'price' => 126750, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'porsche-911-carrera-4s', 'year' => 2023, 'make' => 'Porsche', 'model' => '911 Carrera 4S', 'type' => 'Sports car', 'mileage' => '8,420 miles', 'engine' => '3.0L flat-six', 'price' => 112950, 'tag' => 'Featured', 'photo' => 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'mercedes-amg-gt', 'year' => 2022, 'make' => 'Mercedes-AMG', 'model' => 'GT', 'type' => 'Sports car', 'mileage' => '12,180 miles', 'engine' => '4.0L V8', 'price' => 84500, 'tag' => 'Collection', 'photo' => 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'range-rover-sport-autobiography', 'year' => 2024, 'make' => 'Range Rover', 'model' => 'Sport Autobiography', 'type' => 'Luxury SUV', 'mileage' => '3,750 miles', 'engine' => '4.4L V8', 'price' => 138500, 'tag' => 'Featured', 'photo' => 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'bentley-continental-gt', 'year' => 2023, 'make' => 'Bentley', 'model' => 'Continental GT', 'type' => 'Grand tourer', 'mileage' => '6,940 miles', 'engine' => '4.0L V8', 'price' => 159950, 'tag' => 'Collection', 'photo' => 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'ferrari-roma', 'year' => 2022, 'make' => 'Ferrari', 'model' => 'Roma', 'type' => 'Grand tourer', 'mileage' => '4,280 miles', 'engine' => '3.9L V8', 'price' => 189500, 'tag' => 'Rare example', 'photo' => 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'lamborghini-urus', 'year' => 2021, 'make' => 'Lamborghini', 'model' => 'Urus', 'type' => 'Luxury SUV', 'mileage' => '15,620 miles', 'engine' => '4.0L V8', 'price' => 174750, 'tag' => 'Performance', 'photo' => 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'mclaren-artura', 'year' => 2023, 'make' => 'McLaren', 'model' => 'Artura', 'type' => 'Sports car', 'mileage' => '1,980 miles', 'engine' => '3.0L V6 hybrid', 'price' => 169900, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'maserati-mc20', 'year' => 2022, 'make' => 'Maserati', 'model' => 'MC20', 'type' => 'Sports car', 'mileage' => '5,410 miles', 'engine' => '3.0L V6', 'price' => 182500, 'tag' => 'Performance', 'photo' => 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=85'),
+        array('id' => 'bmw-m8-competition', 'year' => 2024, 'make' => 'BMW', 'model' => 'M8 Competition', 'type' => 'Grand tourer', 'mileage' => '1,250 miles', 'engine' => '4.4L V8', 'price' => 118750, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=85')
+    );
+}

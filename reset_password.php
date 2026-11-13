@@ -1,0 +1,8 @@
+<?php
+require_once __DIR__ . '/auth.php';
+$user = require_signed_in();
+$submitted = $_SERVER['REQUEST_METHOD'] === 'POST';
+?>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Password reset | Price Prestige Motors</title><style>
+body{background:#f5f3ef;color:#171717;font-family:Arial,sans-serif}.card{background:#fff;margin:70px auto;max-width:480px;padding:40px}.eyebrow{color:#b79b68;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}h1{font-family:Georgia,serif;font-weight:500}.intro{color:#737373;line-height:1.6}label{display:block;font-size:.8rem;font-weight:bold;margin:18px 0 7px}input{border:1px solid #dedbd4;box-sizing:border-box;padding:12px;width:100%}.button{background:#171717;border:0;color:#fff;margin-top:22px;padding:14px;width:100%}.success{background:#edf6ee;color:#28633a;margin-top:20px;padding:14px}
+</style></head><body><main class="card"><span class="eyebrow">Account security</span><h1>Reset your password</h1><?php if ($submitted): ?><p class="success">Your password reset request has been received. Email delivery will be connected when the account database workflow is added.</p><?php else: ?><p class="intro">Enter your email address and we will prepare a secure reset link.</p><form method="post"><label for="email">Email address</label><input id="email" type="email" value="<?php echo e($user['email']); ?>" required><button class="button" type="submit">Request reset link</button></form><?php endif; ?><p><a href="account.php">&larr; Back to account</a></p></main></body></html>
