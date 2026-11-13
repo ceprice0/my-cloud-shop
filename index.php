@@ -93,6 +93,7 @@ a {
     border: 1px solid var(--ink);
     padding: 11px 17px;
 }
+.menu-toggle{display:none}
 
 .hero {
     background: linear-gradient(90deg, rgba(10, 10, 10, 0.78), rgba(10, 10, 10, 0.12)),
@@ -345,6 +346,10 @@ footer a {
         flex-wrap: wrap;
         gap: 15px;
     }
+    .menu-toggle{background:none;border:0;display:block;font-size:1.6rem;position:absolute;right:6vw;top:20px}
+    .nav{position:relative}
+    .nav-links{display:none;width:100%}
+    .nav-links.open{display:flex}
 
     .hero {
         min-height: 500px;
@@ -384,9 +389,12 @@ footer a {
         Price Prestige Motors
         <span>Luxury &amp; Performance</span>
     </a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('open'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('open'));">&#9776;</button>
     <div class="nav-links">
         <a href="#inventory">Inventory</a>
         <a href="#about">Our Approach</a>
+        <a href="favourites.php">Favourites</a>
+        <a href="compare.php">Compare</a>
         <?php if ($signedInUser): ?>
             <a href="account.php">My account</a>
             <a href="enquiry.php">My enquiry</a>

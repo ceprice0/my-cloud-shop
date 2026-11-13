@@ -1,9 +1,17 @@
 <?php
 
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/vehicle_data.php';
 
 $user = require_signed_in();
 $submitted = $_SERVER['REQUEST_METHOD'] === 'POST';
+$vehicleName = '';
+foreach (vehicle_catalogue() as $vehicle) {
+    if ($vehicle['id'] === ($_GET['vehicle'] ?? $_POST['vehicle_id'] ?? '')) {
+        $vehicleName = $vehicle['make'] . ' ' . $vehicle['model'];
+        break;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +39,7 @@ body{background:#f5f3ef;color:#171717;font-family:Arial,sans-serif}
     <h1>Arrange a viewing</h1>
     <p class="intro">Tell us which vehicle has caught your eye and our team will be in touch.</p>
     <form method="post">
-        <div class="form-group"><label for="vehicle">Vehicle</label><input id="vehicle" name="vehicle" placeholder="For example, Porsche 911 Carrera 4S" required></div>
+        <div class="form-group"><label for="vehicle">Vehicle</label><input id="vehicle" name="vehicle" value="<?php echo e($vehicleName); ?>" placeholder="For example, Porsche 911 Carrera 4S" required></div>
         <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us how we can help"></textarea></div>
         <button class="button" type="submit">Send enquiry</button>
     </form>

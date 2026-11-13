@@ -30,6 +30,7 @@ a{color:inherit;text-decoration:none}
 .nav-links{align-items:center;display:flex;gap:26px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
 .nav-links a:hover{color:var(--gold)}
 .nav-button{border:1px solid var(--ink);padding:11px 17px}
+.menu-toggle{display:none}
 .intro{background:var(--ink);color:var(--white);padding:80px 6vw}
 .eyebrow{color:var(--gold);font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
 h1,h2{font-family:"Playfair Display",Georgia,serif;font-weight:500}
@@ -55,18 +56,21 @@ select{background:var(--cream);border:1px solid var(--line);font:inherit;font-si
 .empty{display:none;grid-column:1/-1;padding:35px;text-align:center}
 footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;padding:27px 6vw}
 footer p,footer a{color:var(--muted);font-size:.74rem}
-@media(max-width:850px){.nav,footer{align-items:flex-start;flex-direction:column;gap:16px}.nav-links{flex-wrap:wrap;gap:14px}.grid{grid-template-columns:repeat(2,1fr)}.count{margin-left:0;width:100%}}
+@media(max-width:850px){.nav,footer{align-items:flex-start;flex-direction:column;gap:16px}.nav{position:relative}.menu-toggle{background:none;border:0;display:block;font-size:1.6rem;position:absolute;right:6vw;top:18px}.nav-links{display:none;flex-wrap:wrap;gap:14px;width:100%}.nav-links.open{display:flex}.grid{grid-template-columns:repeat(2,1fr)}.count{margin-left:0;width:100%}}
 @media(max-width:550px){.grid{grid-template-columns:1fr}.intro{padding:60px 6vw}.filters{align-items:stretch;flex-direction:column}.filters select{width:100%}}
 </style>
 </head>
 <body>
 <nav class="nav">
     <a class="brand" href="index.php">Price Prestige Motors<span>Luxury &amp; Performance</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('open'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('open'));">&#9776;</button>
     <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="products.php">Inventory</a>
         <?php if ($signedInUser): ?>
             <a href="account.php">My account</a>
+            <a href="favourites.php">Favourites</a>
+            <a href="compare.php">Compare</a>
             <a href="enquiry.php">My enquiry</a>
             <a href="logout.php">Sign out</a>
         <?php else: ?>

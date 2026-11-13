@@ -22,6 +22,7 @@ start_user_session();
 $_SESSION['recent_vehicles'] = array_values(array_unique(array_merge(array($vehicle['id']), $_SESSION['recent_vehicles'] ?? array())));
 $_SESSION['recent_vehicles'] = array_slice($_SESSION['recent_vehicles'], 0, 6);
 $favourites = $_SESSION['favourites'] ?? array();
+$signedInUser = signed_in_user();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'favourite') {
     if (in_array($vehicle['id'], $favourites, true)) {
         $favourites = array_values(array_diff($favourites, array($vehicle['id'])));
@@ -43,9 +44,18 @@ $isFavourite = in_array($vehicle['id'], $favourites, true);
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
 :root{--ink:#171717;--muted:#737373;--cream:#f5f3ef;--white:#fff;--gold:#b79b68;--line:#dedbd4}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--cream);color:var(--ink);font-family:"DM Sans",Arial,sans-serif}a{color:inherit;text-decoration:none}.nav{align-items:center;background:#fff;display:flex;justify-content:space-between;padding:22px 6vw}.brand{font-family:Georgia,serif;font-size:1.35rem}.brand span{color:var(--gold);display:block;font-family:Arial,sans-serif;font-size:.57rem;letter-spacing:.3em;text-transform:uppercase}.nav-links{display:flex;gap:22px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}.main{margin:auto;max-width:1250px;padding:55px 6vw 90px}.back{color:var(--muted);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}.layout{display:grid;gap:35px;grid-template-columns:1.15fr .85fr;margin-top:25px}.gallery{background:#d7d3cb}.gallery>img{cursor:zoom-in;display:block;height:470px;object-fit:cover;width:100%}.thumbs{display:grid;gap:8px;grid-template-columns:repeat(3,1fr);padding:8px}.thumbs img{cursor:pointer;height:100px;object-fit:cover;width:100%}.eyebrow{color:var(--gold);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}.details{background:#fff;padding:38px}.details h1{font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.8rem);font-weight:500;line-height:1.05;margin:14px 0}.meta{color:var(--muted);line-height:1.8}.price{font-size:1.45rem;font-weight:600;margin:25px 0}.actions{display:grid;gap:10px;margin-top:25px}.button{background:var(--ink);border:0;color:#fff;cursor:pointer;display:block;font:inherit;font-size:.7rem;letter-spacing:.13em;padding:15px;text-align:center;text-transform:uppercase}.button.alt{background:var(--gold);color:var(--ink)}.button.light{background:var(--cream);color:var(--ink)}.specs{background:#fff;display:grid;gap:1px;grid-template-columns:repeat(2,1fr);margin-top:35px}.spec{border:1px solid var(--line);padding:20px}.spec strong{display:block;font-size:.7rem;letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}.spec span{color:var(--muted);font-size:.9rem}.lightbox{align-items:center;background:#000c;display:none;height:100%;justify-content:center;left:0;padding:25px;position:fixed;top:0;width:100%;z-index:5}.lightbox.open{display:flex}.lightbox img{max-height:90%;max-width:90%;object-fit:contain}@media(max-width:800px){.nav{align-items:flex-start;flex-direction:column;gap:15px}.nav-links{flex-wrap:wrap}.layout{grid-template-columns:1fr}.gallery>img{height:300px}}
 </style>
+<style>
+.menu-toggle{display:none}
+@media(max-width:800px){
+    .nav{position:relative}
+    .menu-toggle{background:none;border:0;display:block;font-size:1.6rem;position:absolute;right:6vw;top:18px}
+    .nav-links{display:none;flex-wrap:wrap;width:100%}
+    .nav-links.open{display:flex}
+}
+</style>
 </head>
 <body>
-<nav class="nav"><a class="brand" href="index.php">Price Prestige Motors<span>Luxury &amp; Performance</span></a><div class="nav-links"><a href="products.php">Inventory</a><a href="account.php">My account</a><a href="signin.php">Sign in</a></div></nav>
+<nav class="nav"><a class="brand" href="index.php">Price Prestige Motors<span>Luxury &amp; Performance</span></a><button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('open'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('open'));">&#9776;</button><div class="nav-links"><a href="products.php">Inventory</a><a href="favourites.php">Favourites</a><a href="compare.php">Compare</a><?php if ($signedInUser): ?><a href="account.php">My account</a><a href="logout.php">Sign out</a><?php else: ?><a href="signin.php">Sign in</a><?php endif; ?></div></nav>
 <main class="main">
 <a class="back" href="products.php">&larr; Back to inventory</a>
 <div class="layout">
