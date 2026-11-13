@@ -383,8 +383,8 @@ footer a {
     <div class="nav-links">
         <a href="#inventory">Inventory</a>
         <a href="#about">Our Approach</a>
-        <a href="users.php">Client Area</a>
-        <a class="nav-button" href="register.php">Contact Us</a>
+        <a href="signin.php">Sign in</a>
+        <a class="nav-button" href="register.php">Create account</a>
     </div>
 </nav>
 

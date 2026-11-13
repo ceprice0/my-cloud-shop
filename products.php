@@ -72,7 +72,8 @@ footer p,footer a{color:var(--muted);font-size:.74rem}
     <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="products.php">Inventory</a>
-        <a href="register.php">Contact us</a>
+        <a href="signin.php">Sign in</a>
+        <a href="register.php">Create account</a>
         <a class="nav-button" href="cart.php">Enquiry list</a>
     </div>
 </nav>

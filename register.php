@@ -96,6 +96,7 @@ label{
     <div class="nav-links">
         <a href="products.php">Shop</a>
         <a href="cart.php">Cart</a>
+        <a href="signin.php">Sign in</a>
         <a href="stats.php">Dashboard</a>
     </div>
 </nav>
