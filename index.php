@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/auth.php';
+$signedInUser = signed_in_user();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -372,7 +376,7 @@ footer a {
 <body>
 <div class="topbar">
     <span>Curated luxury &amp; performance vehicles</span>
-    <a href="register.php">Enquire with our team &rarr;</a>
+    <a href="<?php echo $signedInUser ? 'enquiry.php' : 'signin.php'; ?>">Enquire with our team &rarr;</a>
 </div>
 
 <nav class="nav">
@@ -383,8 +387,13 @@ footer a {
     <div class="nav-links">
         <a href="#inventory">Inventory</a>
         <a href="#about">Our Approach</a>
-        <a href="signin.php">Sign in</a>
-        <a class="nav-button" href="register.php">Create account</a>
+        <?php if ($signedInUser): ?>
+            <a href="enquiry.php">My enquiry</a>
+            <a class="nav-button" href="logout.php">Sign out</a>
+        <?php else: ?>
+            <a href="signin.php">Sign in</a>
+            <a class="nav-button" href="register.php">Create account</a>
+        <?php endif; ?>
     </div>
 </nav>
 
@@ -395,7 +404,7 @@ footer a {
         <p>Exceptional sports and luxury vehicles, selected for their character, provenance and ability to make every journey memorable.</p>
         <div class="hero-actions">
             <a class="button primary" href="#inventory">Explore inventory</a>
-            <a class="button" href="register.php">Arrange a viewing</a>
+            <a class="button" href="<?php echo $signedInUser ? 'enquiry.php' : 'signin.php'; ?>">Arrange a viewing</a>
         </div>
     </section>
 
@@ -435,7 +444,7 @@ footer a {
                 <div class="eyebrow">The latest arrivals</div>
                 <h2>Featured vehicles</h2>
             </div>
-            <a href="register.php">View all inventory &rarr;</a>
+            <a href="products.php">View all inventory &rarr;</a>
         </div>
         <div class="inventory-grid">
             <article class="vehicle-card">
@@ -448,7 +457,7 @@ footer a {
                     <p class="vehicle-meta">2023 &nbsp;·&nbsp; 8,420 miles &nbsp;·&nbsp; Automatic</p>
                     <div class="vehicle-bottom">
                         <span class="vehicle-price">&pound;112,950</span>
-                        <a class="vehicle-link" href="register.php">Enquire &rarr;</a>
+                        <a class="vehicle-link" href="<?php echo $signedInUser ? 'enquiry.php' : 'signin.php'; ?>">Enquire &rarr;</a>
                     </div>
                 </div>
             </article>
@@ -462,7 +471,7 @@ footer a {
                     <p class="vehicle-meta">2022 &nbsp;·&nbsp; 12,180 miles &nbsp;·&nbsp; Automatic</p>
                     <div class="vehicle-bottom">
                         <span class="vehicle-price">&pound;84,500</span>
-                        <a class="vehicle-link" href="register.php">Enquire &rarr;</a>
+                        <a class="vehicle-link" href="<?php echo $signedInUser ? 'enquiry.php' : 'signin.php'; ?>">Enquire &rarr;</a>
                     </div>
                 </div>
             </article>
@@ -476,7 +485,7 @@ footer a {
                     <p class="vehicle-meta">2024 &nbsp;·&nbsp; 2,100 miles &nbsp;·&nbsp; Automatic</p>
                     <div class="vehicle-bottom">
                         <span class="vehicle-price">&pound;126,750</span>
-                        <a class="vehicle-link" href="register.php">Enquire &rarr;</a>
+                        <a class="vehicle-link" href="<?php echo $signedInUser ? 'enquiry.php' : 'signin.php'; ?>">Enquire &rarr;</a>
                     </div>
                 </div>
             </article>

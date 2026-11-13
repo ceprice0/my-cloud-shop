@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/auth.php';
+$signedInUser = signed_in_user();
+
 $vehicles = array(
     array('year' => 2024, 'make' => 'Aston Martin', 'model' => 'Vantage', 'type' => 'Sports car', 'mileage' => '2,100 miles', 'engine' => '4.0L V8', 'price' => 126750, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=85'),
     array('year' => 2023, 'make' => 'Porsche', 'model' => '911 Carrera 4S', 'type' => 'Sports car', 'mileage' => '8,420 miles', 'engine' => '3.0L flat-six', 'price' => 112950, 'tag' => 'Featured', 'photo' => 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85'),
@@ -72,8 +75,13 @@ footer p,footer a{color:var(--muted);font-size:.74rem}
     <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="products.php">Inventory</a>
-        <a href="signin.php">Sign in</a>
-        <a href="register.php">Create account</a>
+        <?php if ($signedInUser): ?>
+            <a href="enquiry.php">My enquiry</a>
+            <a href="logout.php">Sign out</a>
+        <?php else: ?>
+            <a href="signin.php">Sign in</a>
+            <a href="register.php">Create account</a>
+        <?php endif; ?>
         <a class="nav-button" href="cart.php">Enquiry list</a>
     </div>
 </nav>
@@ -120,7 +128,7 @@ footer p,footer a{color:var(--muted);font-size:.74rem}
                     <p class="meta"><?php echo $vehicle['year']; ?> &nbsp;·&nbsp; <?php echo htmlspecialchars($vehicle['mileage'], ENT_QUOTES, 'UTF-8'); ?><br><?php echo htmlspecialchars($vehicle['engine'], ENT_QUOTES, 'UTF-8'); ?> &nbsp;·&nbsp; <?php echo htmlspecialchars($vehicle['type'], ENT_QUOTES, 'UTF-8'); ?></p>
                     <div class="bottom">
                         <span class="price">&pound;<?php echo number_format($vehicle['price']); ?></span>
-                        <a class="enquire" href="register.php">Enquire &rarr;</a>
+                        <a class="enquire" href="<?php echo $signedInUser ? 'enquiry.php' : 'signin.php'; ?>">Enquire &rarr;</a>
                     </div>
                 </div>
             </article>
