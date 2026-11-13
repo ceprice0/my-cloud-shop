@@ -1,16 +1,16 @@
 <?php
 
 $vehicles = array(
-    array('year' => 2024, 'make' => 'Aston Martin', 'model' => 'Vantage', 'type' => 'Sports car', 'mileage' => '2,100 miles', 'engine' => '4.0L V8', 'price' => 126750, 'tag' => 'New arrival'),
-    array('year' => 2023, 'make' => 'Porsche', 'model' => '911 Carrera 4S', 'type' => 'Sports car', 'mileage' => '8,420 miles', 'engine' => '3.0L flat-six', 'price' => 112950, 'tag' => 'Featured'),
-    array('year' => 2022, 'make' => 'Mercedes-AMG', 'model' => 'GT', 'type' => 'Sports car', 'mileage' => '12,180 miles', 'engine' => '4.0L V8', 'price' => 84500, 'tag' => 'Collection'),
-    array('year' => 2024, 'make' => 'Range Rover', 'model' => 'Sport Autobiography', 'type' => 'Luxury SUV', 'mileage' => '3,750 miles', 'engine' => '4.4L V8', 'price' => 138500, 'tag' => 'Featured'),
-    array('year' => 2023, 'make' => 'Bentley', 'model' => 'Continental GT', 'type' => 'Grand tourer', 'mileage' => '6,940 miles', 'engine' => '4.0L V8', 'price' => 159950, 'tag' => 'Collection'),
-    array('year' => 2022, 'make' => 'Ferrari', 'model' => 'Roma', 'type' => 'Grand tourer', 'mileage' => '4,280 miles', 'engine' => '3.9L V8', 'price' => 189500, 'tag' => 'Rare example'),
-    array('year' => 2021, 'make' => 'Lamborghini', 'model' => 'Urus', 'type' => 'Luxury SUV', 'mileage' => '15,620 miles', 'engine' => '4.0L V8', 'price' => 174750, 'tag' => 'Performance'),
-    array('year' => 2023, 'make' => 'McLaren', 'model' => 'Artura', 'type' => 'Sports car', 'mileage' => '1,980 miles', 'engine' => '3.0L V6 hybrid', 'price' => 169900, 'tag' => 'New arrival'),
-    array('year' => 2022, 'make' => 'Maserati', 'model' => 'MC20', 'type' => 'Sports car', 'mileage' => '5,410 miles', 'engine' => '3.0L V6', 'price' => 182500, 'tag' => 'Performance'),
-    array('year' => 2024, 'make' => 'BMW', 'model' => 'M8 Competition', 'type' => 'Grand tourer', 'mileage' => '1,250 miles', 'engine' => '4.4L V8', 'price' => 118750, 'tag' => 'New arrival')
+    array('year' => 2024, 'make' => 'Aston Martin', 'model' => 'Vantage', 'type' => 'Sports car', 'mileage' => '2,100 miles', 'engine' => '4.0L V8', 'price' => 126750, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2023, 'make' => 'Porsche', 'model' => '911 Carrera 4S', 'type' => 'Sports car', 'mileage' => '8,420 miles', 'engine' => '3.0L flat-six', 'price' => 112950, 'tag' => 'Featured', 'photo' => 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2022, 'make' => 'Mercedes-AMG', 'model' => 'GT', 'type' => 'Sports car', 'mileage' => '12,180 miles', 'engine' => '4.0L V8', 'price' => 84500, 'tag' => 'Collection', 'photo' => 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2024, 'make' => 'Range Rover', 'model' => 'Sport Autobiography', 'type' => 'Luxury SUV', 'mileage' => '3,750 miles', 'engine' => '4.4L V8', 'price' => 138500, 'tag' => 'Featured', 'photo' => 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2023, 'make' => 'Bentley', 'model' => 'Continental GT', 'type' => 'Grand tourer', 'mileage' => '6,940 miles', 'engine' => '4.0L V8', 'price' => 159950, 'tag' => 'Collection', 'photo' => 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2022, 'make' => 'Ferrari', 'model' => 'Roma', 'type' => 'Grand tourer', 'mileage' => '4,280 miles', 'engine' => '3.9L V8', 'price' => 189500, 'tag' => 'Rare example', 'photo' => 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2021, 'make' => 'Lamborghini', 'model' => 'Urus', 'type' => 'Luxury SUV', 'mileage' => '15,620 miles', 'engine' => '4.0L V8', 'price' => 174750, 'tag' => 'Performance', 'photo' => 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2023, 'make' => 'McLaren', 'model' => 'Artura', 'type' => 'Sports car', 'mileage' => '1,980 miles', 'engine' => '3.0L V6 hybrid', 'price' => 169900, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2022, 'make' => 'Maserati', 'model' => 'MC20', 'type' => 'Sports car', 'mileage' => '5,410 miles', 'engine' => '3.0L V6', 'price' => 182500, 'tag' => 'Performance', 'photo' => 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=85'),
+    array('year' => 2024, 'make' => 'BMW', 'model' => 'M8 Competition', 'type' => 'Grand tourer', 'mileage' => '1,250 miles', 'engine' => '4.4L V8', 'price' => 118750, 'tag' => 'New arrival', 'photo' => 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=85')
 );
 
 $makes = array_unique(array_map(function ($vehicle) {
@@ -48,9 +48,10 @@ select{background:var(--cream);border:1px solid var(--line);font:inherit;font-si
 .count{color:var(--muted);font-size:.75rem;letter-spacing:.08em;margin-left:auto;padding:14px 0;text-transform:uppercase}
 .grid{display:grid;gap:22px;grid-template-columns:repeat(3,1fr)}
 .card{background:var(--white)}
-.photo{align-items:center;background:linear-gradient(135deg,#d7d3cb,#77736c);color:#fff;display:flex;height:220px;justify-content:center;position:relative;text-align:center}
-.photo::after{border:1px solid rgba(255,255,255,.55);content:"";height:70%;position:absolute;width:82%}
-.placeholder{font-size:.68rem;letter-spacing:.16em;position:relative;text-transform:uppercase;z-index:1}
+.photo{background:#d7d3cb;height:220px;overflow:hidden;position:relative}
+.photo img{height:100%;object-fit:cover;width:100%}
+.photo::after{border:1px solid rgba(255,255,255,.55);content:"";height:70%;left:9%;position:absolute;top:15%;width:82%}
+.photo-credit{background:rgba(23,23,23,.72);bottom:0;color:#fff;font-size:.58rem;letter-spacing:.08em;padding:6px 9px;position:absolute;right:0;text-transform:uppercase}
 .tag{background:var(--white);font-size:.63rem;left:14px;letter-spacing:.1em;padding:8px 10px;position:absolute;text-transform:uppercase;top:14px;z-index:2}
 .details{padding:21px}
 .details h2{font-size:1.35rem}
@@ -110,7 +111,8 @@ footer p,footer a{color:var(--muted);font-size:.74rem}
             <article class="card" data-make="<?php echo htmlspecialchars($vehicle['make'], ENT_QUOTES, 'UTF-8'); ?>" data-type="<?php echo htmlspecialchars($vehicle['type'], ENT_QUOTES, 'UTF-8'); ?>" data-price="<?php echo $vehicle['price']; ?>" data-year="<?php echo $vehicle['year']; ?>">
                 <div class="photo">
                     <span class="tag"><?php echo htmlspecialchars($vehicle['tag'], ENT_QUOTES, 'UTF-8'); ?></span>
-                    <span class="placeholder">Photo coming soon</span>
+                    <img src="<?php echo htmlspecialchars($vehicle['photo'], ENT_QUOTES, 'UTF-8'); ?>" alt="Representative <?php echo htmlspecialchars($vehicle['make'] . ' ' . $vehicle['model'], ENT_QUOTES, 'UTF-8'); ?> photography" loading="lazy">
+                    <span class="photo-credit">Representative image</span>
                 </div>
                 <div class="details">
                     <h2><?php echo htmlspecialchars($vehicle['make'] . ' ' . $vehicle['model'], ENT_QUOTES, 'UTF-8'); ?></h2>
