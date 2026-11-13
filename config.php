@@ -8,11 +8,19 @@ function db_connect()
         throw new RuntimeException('The SQL Server PHP extension is not enabled.');
     }
 
-    $serverName = getenv('DB_SERVER') ?: 'tcp:an-sql-server1.database.windows.net,1433';
+    $serverName = getenv('DB_SERVER');
+    $database = getenv('DB_NAME');
+    $user = getenv('DB_USER');
+    $password = getenv('DB_PASSWORD');
+
+    if (!$serverName || !$database || !$user || $password === false || $password === '') {
+        throw new RuntimeException('Database configuration is incomplete. Set DB_SERVER, DB_NAME, DB_USER, and DB_PASSWORD in the Azure App Service settings.');
+    }
+
     $options = array(
-        'Database' => getenv('DB_NAME') ?: 'calumsdatabase',
-        'Uid' => getenv('DB_USER') ?: '',
-        'PWD' => getenv('DB_PASSWORD') ?: '',
+        'Database' => $database,
+        'Uid' => $user,
+        'PWD' => $password,
         'Encrypt' => 1,
         'TrustServerCertificate' => 0
     );
@@ -20,6 +28,8 @@ function db_connect()
     $connection = sqlsrv_connect($serverName, $options);
 
     if ($connection === false) {
+        $errors = sqlsrv_errors();
+        error_log('SQL Server connection failed: ' . json_encode($errors ?: array()));
         throw new RuntimeException('Unable to connect to the database.');
     }
 
